@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct MazeWatchApp: App {
-    @StateObject private var env = AppEnvironment()
+    @StateObject private var environment = AppEnvironment()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(env)
+                .environmentObject(environment)
         }
     }
 }

@@ -5,14 +5,29 @@
 //  Created by Jesus Rojas on 18/05/25.
 //
 
+@testable import MazeWatch
 import Foundation
 
 final class MockAPIClient: APIClientProtocol {
 
     // MARK: - Toggleable Behavior for Testing
     var mockSeries: [Series] = [
-        Series(id: 1, name: "Breaking Test", image: nil),
-        Series(id: 2, name: "Swift & Furious", image: nil)
+        Series(
+            id: 1,
+            name: "Breaking Test",
+            image: .init(medium: nil, original: nil),
+            genres: ["Drama", "Action"],
+            premiered: "2020-05-10",
+            network: .init(name: "MockFlix")
+        ),
+        Series(
+            id: 2,
+            name: "Swift & Furious",
+            image: .init(medium: nil, original: nil),
+            genres: ["Thriller"],
+            premiered: "2022-08-15",
+            network: .init(name: "CodeMax")
+        )
     ]
 
     var mockDetail: SeriesDetail = SeriesDetail(

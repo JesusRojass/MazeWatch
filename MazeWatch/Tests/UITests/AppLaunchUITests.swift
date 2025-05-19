@@ -9,25 +9,21 @@ import XCTest
 
 final class AppLaunchUITests: XCTestCase {
 
-    override class var runsForEachTargetApplicationUIConfiguration: Bool {
-        true
-    }
-
-    override func setUpWithError() throws {
-        continueAfterFailure = false
-    }
-
-    @MainActor
-    func testLaunch() throws {
+    func testScrollTriggersPagination() {
         let app = XCUIApplication()
         app.launch()
 
-        // Insert steps here to perform after app launch but before taking a screenshot,
-        // such as logging into a test account or navigating somewhere in the app
+        let firstCell = app.scrollViews.children(matching: .other).element(boundBy: 0)
+        XCTAssertTrue(firstCell.waitForExistence(timeout: 5), "First series card should exist")
 
-        let attachment = XCTAttachment(screenshot: app.screenshot())
-        attachment.name = "Launch Screen"
-        attachment.lifetime = .keepAlways
-        add(attachment)
+        // Try to scroll several times
+        for _ in 0..<10 {
+            app.swipeUp()
+            sleep(1)
+        }
+
+        // Check for more cards (assumes mock or API loads new content)
+        let cellCount = app.scrollViews.children(matching: .other).count
+        XCTAssertGreaterThan(cellCount, 20, "Pagination should load more than 20 series cards")
     }
 }

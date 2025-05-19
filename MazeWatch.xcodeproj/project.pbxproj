@@ -33,22 +33,31 @@
 		D5ACFECB2DDAA92B00B7F76D /* Exceptions for "MazeWatch" folder in "MazeWatch" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Tests/Mocks/MockAPIClient.swift,
 				Tests/UITests/AppLaunchUITests.swift,
 				Tests/UITests/AppUITests.swift,
 				Tests/UnitTests/AppEnvironmentTests.swift,
+				Tests/UnitTests/FavoritesStoreTests.swift,
+				Tests/UnitTests/SeriesListViewModelTests.swift,
+				Tests/Utilities/ChunkedExtensionTests.swift,
 			);
 			target = D597FEED2DDAA0A600BED01A /* MazeWatch */;
 		};
 		D5ACFECC2DDAA92B00B7F76D /* Exceptions for "MazeWatch" folder in "MazeWatchTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Tests/Mocks/MockAPIClient.swift,
 				Tests/UnitTests/AppEnvironmentTests.swift,
+				Tests/UnitTests/FavoritesStoreTests.swift,
+				Tests/UnitTests/SeriesListViewModelTests.swift,
+				Tests/Utilities/ChunkedExtensionTests.swift,
 			);
 			target = D597FEFF2DDAA0A700BED01A /* MazeWatchTests */;
 		};
 		D5ACFECD2DDAA92B00B7F76D /* Exceptions for "MazeWatch" folder in "MazeWatchUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Tests/Mocks/MockAPIClient.swift,
 				Tests/UITests/AppLaunchUITests.swift,
 				Tests/UITests/AppUITests.swift,
 			);
