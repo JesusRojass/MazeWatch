@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct MazeWatchApp: App {
-    let persistenceController = PersistenceController.shared
+    @StateObject private var env = AppEnvironment()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(env)
         }
     }
 }

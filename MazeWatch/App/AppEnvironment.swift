@@ -5,3 +5,12 @@
 //  Created by Jesus Rojas on 18/05/25.
 //
 
+import Foundation
+
+final class AppEnvironment: ObservableObject {
+    let apiClient: APIClientProtocol
+
+    init(apiClient: APIClientProtocol = APIClient(baseURL: "https://api.tvmaze.com")) {
+        self.apiClient = apiClient
+    }
+}

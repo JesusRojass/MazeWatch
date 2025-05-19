@@ -1,0 +1,8 @@
+[21:25:50 2025-05-18] FETCHING Version 2.40.8
+[21:25:50 2025-05-18] DOWNLOADING https://github.com/spicetify/cli/releases/download/v2.40.8/spicetify-2.40.8-darwin-arm64.tar.gz
+[21:25:52 2025-05-18] EXTRACTING /Users/rojas/.spicetify/spicetify.tar.gz
+[21:25:52 2025-05-18] SETTING EXECUTABLE PERMISSIONS TO /Users/rojas/.spicetify/spicetify
+[21:25:52 2025-05-18] REMOVING /Users/rojas/.spicetify/spicetify.tar.gz
+[21:25:52 2025-05-18] APPENDING /Users/rojas/.spicetify to PATH in /Users/rojas/.zshrc
+[21:25:52 2025-05-18] spicetify v2.40.8 was installed successfully to /Users/rojas/.spicetify
+[21:25:52 2025-05-18] Run 'spicetify --help' to get started
