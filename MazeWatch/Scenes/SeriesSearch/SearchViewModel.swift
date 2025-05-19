@@ -15,7 +15,7 @@ final class SearchViewModel: ObservableObject {
     @Published var isLoading: Bool = false
 
     private var cancellables = Set<AnyCancellable>()
-    private let apiClient: APIClientProtocol
+    private(set) var apiClient: APIClientProtocol
 
     init(apiClient: APIClientProtocol) {
         self.apiClient = apiClient

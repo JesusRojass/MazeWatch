@@ -20,45 +20,13 @@ struct SearchView: View {
         NavigationView {
             Group {
                 if viewModel.query.isEmpty {
-                    // Placeholder state before user starts typing
-                    VStack(spacing: 12) {
-                        Image(systemName: "magnifyingglass")
-                            .font(.system(size: 48))
-                            .foregroundColor(.secondary)
-                        Text("Start searching for TV shows")
-                            .font(.headline)
-                            .foregroundColor(.secondary)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    emptyStateView(icon: "magnifyingglass", message: "Start searching for TV shows")
                 } else if viewModel.isLoading {
-                    // Loading indicator during search
-                    VStack(spacing: 12) {
-                        ProgressView("Searching...")
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    loadingStateView()
                 } else if viewModel.results.isEmpty {
-                    // No results found state
-                    VStack(spacing: 12) {
-                        Image(systemName: "questionmark.circle")
-                            .font(.system(size: 48))
-                            .foregroundColor(.secondary)
-                        Text("Sorry, no results found")
-                            .font(.headline)
-                            .foregroundColor(.secondary)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    emptyStateView(icon: "questionmark.circle", message: "Sorry, no results found")
                 } else {
-                    // Display search results as a list of cards
-                    List {
-                        ForEach(viewModel.results) { series in
-                            SeriesCardView(series: series)
-                                .listRowSeparator(.hidden)
-                                .listRowBackground(Color.clear)
-                        }
-                    }
-                    .listStyle(.plain)
-                    .scrollContentBackground(.hidden)
-                    .background(Color(UIColor.systemBackground))
+                    searchResultsList
                 }
             }
             .searchable(text: $viewModel.query)
@@ -68,6 +36,49 @@ struct SearchView: View {
             }
             .navigationTitle("Search")
         }
+    }
+
+    private var searchResultsList: some View {
+        ScrollView {
+            LazyVStack(spacing: 16) {
+                ForEach(viewModel.results) { series in
+                    NavigationLink(destination: detailView(for: series)) {
+                        SeriesCardView(series: series)
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.horizontal)
+                }
+            }
+        }
+        .background(Color(UIColor.systemBackground))
+    }
+
+    private func detailView(for series: Series) -> some View {
+        SeriesDetailView(
+            viewModel: SeriesDetailViewModel(
+                seriesID: series.id,
+                apiClient: viewModel.apiClient
+            )
+        )
+    }
+
+    private func emptyStateView(icon: String, message: String) -> some View {
+        VStack(spacing: 12) {
+            Image(systemName: icon)
+                .font(.system(size: 48))
+                .foregroundColor(.secondary)
+            Text(message)
+                .font(.headline)
+                .foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private func loadingStateView() -> some View {
+        VStack(spacing: 12) {
+            ProgressView("Searching...")
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

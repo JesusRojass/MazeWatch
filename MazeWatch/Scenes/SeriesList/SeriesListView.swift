@@ -21,14 +21,24 @@ struct SeriesListView: View {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 16) {
                     ForEach(viewModel.series) { item in
-                        SeriesCardView(series: item)
-                            .onAppear {
-                                Task {
-                                    if shouldTriggerNextPage(for: item) {
-                                        await viewModel.loadNextPage()
-                                    }
+                        NavigationLink(
+                            destination: SeriesDetailView(
+                                viewModel: SeriesDetailViewModel(
+                                    seriesID: item.id,
+                                    apiClient: AppEnvironment().apiClient
+                                )
+                            )
+                        ) {
+                            SeriesCardView(series: item)
+                        }
+                        .buttonStyle(.plain)
+                        .onAppear {
+                            Task {
+                                if shouldTriggerNextPage(for: item) {
+                                    await viewModel.loadNextPage()
                                 }
                             }
+                        }
                     }
 
                     if viewModel.isLoading {
