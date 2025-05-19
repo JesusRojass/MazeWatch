@@ -36,8 +36,10 @@
 				Tests/Mocks/MockAPIClient.swift,
 				Tests/UITests/AppLaunchUITests.swift,
 				Tests/UITests/AppUITests.swift,
+				Tests/UITests/SearchUITests.swift,
 				Tests/UnitTests/AppEnvironmentTests.swift,
 				Tests/UnitTests/FavoritesStoreTests.swift,
+				Tests/UnitTests/SearchViewModelTests.swift,
 				Tests/UnitTests/SeriesListViewModelTests.swift,
 				Tests/Utilities/ChunkedExtensionTests.swift,
 			);
@@ -49,6 +51,7 @@
 				Tests/Mocks/MockAPIClient.swift,
 				Tests/UnitTests/AppEnvironmentTests.swift,
 				Tests/UnitTests/FavoritesStoreTests.swift,
+				Tests/UnitTests/SearchViewModelTests.swift,
 				Tests/UnitTests/SeriesListViewModelTests.swift,
 				Tests/Utilities/ChunkedExtensionTests.swift,
 			);
@@ -60,6 +63,7 @@
 				Tests/Mocks/MockAPIClient.swift,
 				Tests/UITests/AppLaunchUITests.swift,
 				Tests/UITests/AppUITests.swift,
+				Tests/UITests/SearchUITests.swift,
 			);
 			target = D597FF092DDAA0A700BED01A /* MazeWatchUITests */;
 		};

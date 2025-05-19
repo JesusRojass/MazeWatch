@@ -31,22 +31,6 @@ struct MainTabView: View {
     }
 }
 
-
-// MARK: - SearchView.swift
-
-import SwiftUI
-
-/// Placeholder view for the search screen. Will allow searching TV series by name.
-struct SearchView: View {
-    var body: some View {
-        NavigationView {
-            Text("Search for series")
-                .navigationTitle("Search")
-        }
-    }
-}
-
-
 // MARK: - FavoritesView.swift
 
 import SwiftUI
