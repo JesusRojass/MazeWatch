@@ -29,20 +29,42 @@
 		D597FF0A2DDAA0A700BED01A /* MazeWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MazeWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D5ACFECB2DDAA92B00B7F76D /* Exceptions for "MazeWatch" folder in "MazeWatch" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Tests/UITests/AppLaunchUITests.swift,
+				Tests/UITests/AppUITests.swift,
+				Tests/UnitTests/AppEnvironmentTests.swift,
+			);
+			target = D597FEED2DDAA0A600BED01A /* MazeWatch */;
+		};
+		D5ACFECC2DDAA92B00B7F76D /* Exceptions for "MazeWatch" folder in "MazeWatchTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Tests/UnitTests/AppEnvironmentTests.swift,
+			);
+			target = D597FEFF2DDAA0A700BED01A /* MazeWatchTests */;
+		};
+		D5ACFECD2DDAA92B00B7F76D /* Exceptions for "MazeWatch" folder in "MazeWatchUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Tests/UITests/AppLaunchUITests.swift,
+				Tests/UITests/AppUITests.swift,
+			);
+			target = D597FF092DDAA0A700BED01A /* MazeWatchUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D597FEF02DDAA0A600BED01A /* MazeWatch */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D5ACFECB2DDAA92B00B7F76D /* Exceptions for "MazeWatch" folder in "MazeWatch" target */,
+				D5ACFECC2DDAA92B00B7F76D /* Exceptions for "MazeWatch" folder in "MazeWatchTests" target */,
+				D5ACFECD2DDAA92B00B7F76D /* Exceptions for "MazeWatch" folder in "MazeWatchUITests" target */,
+			);
 			path = MazeWatch;
-			sourceTree = "<group>";
-		};
-		D597FF032DDAA0A700BED01A /* MazeWatchTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MazeWatchTests;
-			sourceTree = "<group>";
-		};
-		D597FF0D2DDAA0A700BED01A /* MazeWatchUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MazeWatchUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -76,8 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				D597FEF02DDAA0A600BED01A /* MazeWatch */,
-				D597FF032DDAA0A700BED01A /* MazeWatchTests */,
-				D597FF0D2DDAA0A700BED01A /* MazeWatchUITests */,
 				D597FEEF2DDAA0A600BED01A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +150,6 @@
 			dependencies = (
 				D597FF022DDAA0A700BED01A /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				D597FF032DDAA0A700BED01A /* MazeWatchTests */,
-			);
 			name = MazeWatchTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +169,6 @@
 			);
 			dependencies = (
 				D597FF0C2DDAA0A700BED01A /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				D597FF0D2DDAA0A700BED01A /* MazeWatchUITests */,
 			);
 			name = MazeWatchUITests;
 			packageProductDependencies = (
@@ -192,6 +206,9 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
+				"en 2",
+				"es 2",
 			);
 			mainGroup = D597FEE52DDAA0A600BED01A;
 			minimizedProjectReferenceProxies = 1;

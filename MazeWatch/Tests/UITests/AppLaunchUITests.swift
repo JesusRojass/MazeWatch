@@ -1,13 +1,13 @@
 //
-//  MazeWatchUITestsLaunchTests.swift
-//  MazeWatchUITests
+//  AppLaunchUITests.swift
+//  MazeWatch
 //
 //  Created by Jesus Rojas on 18/05/25.
 //
 
 import XCTest
 
-final class MazeWatchUITestsLaunchTests: XCTestCase {
+final class AppLaunchUITests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
