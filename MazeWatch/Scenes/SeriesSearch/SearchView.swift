@@ -9,11 +9,11 @@ import SwiftUI
 
 /// Search screen allowing users to find TV series by name.
 struct SearchView: View {
-    @EnvironmentObject var env: AppEnvironment
     @StateObject private var viewModel: SearchViewModel
 
-    init() {
-        _viewModel = StateObject(wrappedValue: SearchViewModel(apiClient: APIClient(baseURL: "https://api.tvmaze.com")))
+    /// ViewModel must be injected to respect MVVM and allow testing/previews
+    init(viewModel: SearchViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 
     var body: some View {
@@ -70,3 +70,31 @@ struct SearchView: View {
         }
     }
 }
+
+#if DEBUG
+#Preview("Default") {
+    SearchView(
+        viewModel: SearchViewModel(apiClient: AppEnvironment().apiClient)
+    )
+}
+
+#Preview("Empty state") {
+    SearchView(
+        viewModel: SearchViewModel(apiClient: PreviewAPIClientEmpty())
+    )
+}
+
+#Preview("Loading state") {
+    SearchView(
+        viewModel: SearchViewModel(apiClient: PreviewAPIClientLoading())
+    )
+}
+
+#if TEST
+#Preview("With MockAPIClient") {
+    SearchView(
+        viewModel: SearchViewModel(apiClient: MockAPIClient())
+    )
+}
+#endif
+#endif

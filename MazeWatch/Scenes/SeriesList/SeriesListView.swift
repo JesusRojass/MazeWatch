@@ -9,11 +9,11 @@ import SwiftUI
 
 /// Main view showing a scrollable list of TV series with infinite scrolling and pull-to-refresh.
 struct SeriesListView: View {
-    @EnvironmentObject var env: AppEnvironment
     @StateObject private var viewModel: SeriesListViewModel
 
-    init() {
-        _viewModel = StateObject(wrappedValue: SeriesListViewModel(apiClient: APIClient(baseURL: "https://api.tvmaze.com")))
+    /// ViewModel must be injected to respect MVVM and allow testing/previews
+    init(viewModel: SeriesListViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 
     var body: some View {
@@ -59,33 +59,31 @@ struct SeriesListView: View {
     }
 }
 
-/// Preview code, we can switch it depending of the environment
+// MARK: - Previews
 #if DEBUG
-import SwiftUI
-
-// Default app data (live API client)
 #Preview("Default") {
-    SeriesListView()
-        .environmentObject(AppEnvironment())
+    SeriesListView(
+        viewModel: SeriesListViewModel(apiClient: AppEnvironment().apiClient)
+    )
 }
 
-// Simulated empty response
 #Preview("Empty state") {
-    SeriesListView()
-        .environmentObject(AppEnvironment(apiClient: PreviewAPIClientEmpty()))
+    SeriesListView(
+        viewModel: SeriesListViewModel(apiClient: PreviewAPIClientEmpty())
+    )
 }
 
-// Simulated loading delay
 #Preview("Loading state") {
-    SeriesListView()
-        .environmentObject(AppEnvironment(apiClient: PreviewAPIClientLoading()))
+    SeriesListView(
+        viewModel: SeriesListViewModel(apiClient: PreviewAPIClientLoading())
+    )
 }
 
 #if TEST
-// Unit test preview using mock client
 #Preview("With MockAPIClient") {
-    SeriesListView()
-        .environmentObject(AppEnvironment(apiClient: MockAPIClient()))
+    SeriesListView(
+        viewModel: SeriesListViewModel(apiClient: MockAPIClient())
+    )
 }
 #endif
 

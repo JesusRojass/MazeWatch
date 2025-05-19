@@ -13,12 +13,12 @@ struct MainTabView: View {
 
     var body: some View {
         TabView {
-            SeriesListView()
+            SeriesListView(viewModel: SeriesListViewModel(apiClient: environment.apiClient))
                 .tabItem {
                     Label("TV Series", systemImage: "tv")
                 }
 
-            SearchView()
+            SearchView(viewModel: SearchViewModel(apiClient: environment.apiClient))
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
