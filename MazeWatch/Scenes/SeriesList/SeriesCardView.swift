@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import CoreData
 
 /// A single card representing a TV series with image, title, genres, year, and network name.
 struct SeriesCardView: View {
     let series: Series
     @EnvironmentObject var env: AppEnvironment
+
+    @State private var isFavorite: Bool = false
+    private let favoriteStorage = FavoriteSeriesStorage()
 
     var body: some View {
         NavigationLink(destination:
@@ -69,6 +73,18 @@ struct SeriesCardView: View {
                     .foregroundColor(.secondary)
                 }
                 Spacer()
+                Button(action: {
+                    if isFavorite {
+                        favoriteStorage.remove(seriesID: series.id)
+                    } else {
+                        favoriteStorage.add(series: series)
+                    }
+                    isFavorite.toggle()
+                }) {
+                    Image(systemName: isFavorite ? "heart.fill" : "heart")
+                        .foregroundColor(isFavorite ? .red : .gray)
+                        .imageScale(.large)
+                }
             }
             .padding(12)
             .background(Color(UIColor.secondarySystemBackground))
@@ -76,6 +92,9 @@ struct SeriesCardView: View {
             .shadow(radius: 2)
         }
         .buttonStyle(PlainButtonStyle()) // removes default blue highlight
+        .onAppear {
+            isFavorite = favoriteStorage.isFavorite(seriesID: series.id)
+        }
     }
 }
 

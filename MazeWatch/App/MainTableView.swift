@@ -41,20 +41,6 @@ struct MainTabView: View {
     }
 }
 
-// MARK: - FavoritesView.swift
-
-import SwiftUI
-
-/// Placeholder view for user favorites. Prepared for future functionality.
-struct FavoritesView: View {
-    var body: some View {
-        NavigationView {
-            Text("Your favorite shows")
-                .navigationTitle("Favorites")
-        }
-    }
-}
-
 // MARK: - SettingsView.swift
 
 import SwiftUI
