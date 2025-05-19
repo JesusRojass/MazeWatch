@@ -15,23 +15,23 @@ final class APIClient: APIClientProtocol {
     }
 
     func fetchSeries(page: Int) async throws -> [Series] {
-        let url = try makeURL(path: "/shows", queryItems: [URLQueryItem(name: "page", value: "\(page)")])
+        let url = try makeURL(path: Endpoints.Path.shows, queryItems: [URLQueryItem(name: "page", value: "\(page)")])
         return try await fetch(from: url)
     }
 
     func searchSeries(query: String) async throws -> [Series] {
-        let url = try makeURL(path: "/search/shows", queryItems: [URLQueryItem(name: "q", value: query)])
+        let url = try makeURL(path: Endpoints.Path.search, queryItems: [URLQueryItem(name: "q", value: query)])
         let rawResults: [SeriesSearchResult] = try await fetch(from: url)
         return rawResults.map { $0.show }
     }
 
     func fetchSeriesDetail(id: Int) async throws -> SeriesDetail {
-        let url = try makeURL(path: "/shows/\(id)")
+        let url = try makeURL(path: Endpoints.Path.detail(for: id))
         return try await fetch(from: url)
     }
 
     func fetchEpisodes(forSeriesID id: Int) async throws -> [Episode] {
-        let url = try makeURL(path: "/shows/\(id)/episodes")
+        let url = try makeURL(path: Endpoints.Path.episodes(for: id))
         return try await fetch(from: url)
     }
 
