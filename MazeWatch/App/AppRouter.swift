@@ -17,6 +17,7 @@ final class AppRouter: ObservableObject {
 
     enum Tab: Hashable {
         case series
+        case peopleSearch 
         case search
         case favorites
         case settings

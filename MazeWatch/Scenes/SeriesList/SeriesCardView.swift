@@ -14,8 +14,7 @@ struct SeriesCardView: View {
     var onFavoriteToggled: (() -> Void)? = nil
     @EnvironmentObject var env: AppEnvironment
 
-    @State private var isFavorite: Bool = false
-    private let favoriteStorage = FavoriteSeriesStorage()
+    @ObservedObject private var favoriteStorage = FavoriteSeriesStorage.shared
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
@@ -69,16 +68,11 @@ struct SeriesCardView: View {
             Spacer()
 
             Button(action: {
-                if isFavorite {
-                    favoriteStorage.remove(seriesID: series.id)
-                } else {
-                    favoriteStorage.add(series: series)
-                }
-                isFavorite.toggle()
+                favoriteStorage.toggleFavorite(for: series)
                 onFavoriteToggled?()
             }) {
-                Image(systemName: isFavorite ? "heart.fill" : "heart")
-                    .foregroundColor(isFavorite ? .red : .gray)
+                Image(systemName: favoriteStorage.isFavorite(seriesID: series.id) ? "heart.fill" : "heart")
+                    .foregroundColor(favoriteStorage.isFavorite(seriesID: series.id) ? .red : .gray)
                     .imageScale(.large)
             }
         }
@@ -86,9 +80,6 @@ struct SeriesCardView: View {
         .background(Color(UIColor.secondarySystemBackground))
         .cornerRadius(12)
         .shadow(radius: 2)
-        .onAppear {
-            isFavorite = favoriteStorage.isFavorite(seriesID: series.id)
-        }
     }
 }
 

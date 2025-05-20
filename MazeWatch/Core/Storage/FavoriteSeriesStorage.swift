@@ -9,11 +9,14 @@ import Foundation
 import CoreData
 
 /// Manages storing and retrieving favorite series in Core Data.
-final class FavoriteSeriesStorage {
+final class FavoriteSeriesStorage: ObservableObject {
+    static let shared = FavoriteSeriesStorage()
     private let context: NSManagedObjectContext
+    @Published private(set) var favorites: [FavoriteSeries] = []
 
     init(context: NSManagedObjectContext = PersistenceController.shared.container.viewContext) {
         self.context = context
+        self.favorites = getAllFavoritesSorted()
     }
 
     func add(series: Series) {
@@ -52,6 +55,15 @@ final class FavoriteSeriesStorage {
     private func save() {
         if context.hasChanges {
             try? context.save()
+            favorites = getAllFavoritesSorted()
+        }
+    }
+
+    func toggleFavorite(for series: Series) {
+        if isFavorite(seriesID: series.id) {
+            remove(seriesID: series.id)
+        } else {
+            add(series: series)
         }
     }
 }

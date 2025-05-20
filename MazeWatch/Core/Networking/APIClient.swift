@@ -62,4 +62,16 @@ final class APIClient: APIClientProtocol {
             throw APIError.serverError(code: httpResponse.statusCode)
         }
     }
+    
+    func fetchPeople(page: Int) async throws -> [Person] {
+        let url = try makeURL(path: "/people", queryItems: [URLQueryItem(name: "page", value: "\(page)")])
+        return try await fetch(from: url)
+    }
+
+    func fetchPersonCredits(personID: Int) async throws -> [CastCredit] {
+        let url = try makeURL(path: "/people/\(personID)/castcredits", queryItems: [URLQueryItem(name: "embed", value: "show")])
+        return try await fetch(from: url)
+    }
 }
+
+   

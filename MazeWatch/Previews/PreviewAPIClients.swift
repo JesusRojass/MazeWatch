@@ -13,6 +13,8 @@ final class PreviewAPIClientEmpty: APIClientProtocol {
     func searchSeries(query: String) async throws -> [Series] { [] }
     func fetchSeriesDetail(id: Int) async throws -> SeriesDetail { throw APIError.notFound }
     func fetchEpisodes(forSeriesID id: Int) async throws -> [Episode] { [] }
+    func fetchPeople(page: Int) async throws -> [Person] { [] }
+    func fetchPersonCredits(personID: Int) async throws -> [CastCredit] { [] }
 }
 
 /// Simulates an API client that mimics a delayed loading state in previews.
@@ -24,4 +26,6 @@ final class PreviewAPIClientLoading: APIClientProtocol {
     func searchSeries(query: String) async throws -> [Series] { [] }
     func fetchSeriesDetail(id: Int) async throws -> SeriesDetail { throw APIError.notFound }
     func fetchEpisodes(forSeriesID id: Int) async throws -> [Episode] { [] }
+    func fetchPeople(page: Int) async throws -> [Person] { [] }
+    func fetchPersonCredits(personID: Int) async throws -> [CastCredit] { [] }
 }

@@ -19,6 +19,12 @@ struct MainTabView: View {
                     Label("TV Series", systemImage: "tv")
                 }
                 .tag(AppRouter.Tab.series)
+            
+            PeopleSearchView()
+                .tabItem {
+                    Label("People", systemImage: "person.2")
+                }
+                .tag(AppRouter.Tab.peopleSearch)
 
             SearchView(viewModel: SearchViewModel(apiClient: environment.apiClient))
                 .tabItem {
