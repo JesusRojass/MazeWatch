@@ -38,7 +38,6 @@
 				Tests/UITests/AppUITests.swift,
 				Tests/UITests/SearchUITests.swift,
 				Tests/UnitTests/AppEnvironmentTests.swift,
-				Tests/UnitTests/FavoritesStoreTests.swift,
 				Tests/UnitTests/SearchViewModelTests.swift,
 				Tests/UnitTests/SeriesListViewModelTests.swift,
 				Tests/Utilities/ChunkedExtensionTests.swift,
@@ -50,7 +49,6 @@
 			membershipExceptions = (
 				Tests/Mocks/MockAPIClient.swift,
 				Tests/UnitTests/AppEnvironmentTests.swift,
-				Tests/UnitTests/FavoritesStoreTests.swift,
 				Tests/UnitTests/SearchViewModelTests.swift,
 				Tests/UnitTests/SeriesListViewModelTests.swift,
 				Tests/Utilities/ChunkedExtensionTests.swift,
