@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FavoritesView: View {
     @StateObject private var viewModel = FavoritesViewModel()
+    @State private var sortAscending: Bool = true
 
     var body: some View {
         NavigationView {
@@ -51,28 +52,43 @@ struct FavoritesView: View {
 
     @ViewBuilder
     private var seriesList: some View {
-        ScrollView {
-            LazyVStack(spacing: 16) {
-                let seriesList = viewModel.favorites.map(toSeries)
-
-                ForEach(seriesList, id: \.id) { series in
-                    NavigationLink(
-                        destination: SeriesDetailView(
-                            viewModel: SeriesDetailViewModel(
-                                seriesID: series.id,
-                                apiClient: AppEnvironment().apiClient
-                            )
-                        )
-                    ) {
-                        SeriesCardView(series: series, onFavoriteToggled: {
-                            viewModel.loadFavorites()
-                        })
-                        .padding(.horizontal)
-                    }
-                    .buttonStyle(.plain)
-                }
+        let seriesList = viewModel.favorites
+            .map(toSeries)
+            .sorted {
+                sortAscending
+                    ? $0.name.lowercased() < $1.name.lowercased()
+                    : $0.name.lowercased() > $1.name.lowercased()
             }
-            .padding(.vertical)
+
+        VStack {
+            Picker("Sort Order", selection: $sortAscending) {
+                Text("A–Z").tag(true)
+                Text("Z–A").tag(false)
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal)
+
+            ScrollView {
+                LazyVStack(spacing: 16) {
+                    ForEach(seriesList, id: \.id) { series in
+                        NavigationLink(
+                            destination: SeriesDetailView(
+                                viewModel: SeriesDetailViewModel(
+                                    seriesID: series.id,
+                                    apiClient: AppEnvironment().apiClient
+                                )
+                            )
+                        ) {
+                            SeriesCardView(series: series, onFavoriteToggled: {
+                                viewModel.loadFavorites()
+                            })
+                            .padding(.horizontal)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(.vertical)
+            }
         }
     }
 }

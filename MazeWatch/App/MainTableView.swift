@@ -40,17 +40,3 @@ struct MainTabView: View {
         }
     }
 }
-
-// MARK: - SettingsView.swift
-
-import SwiftUI
-
-/// Placeholder view for app settings. Prepared for future customization.
-struct SettingsView: View {
-    var body: some View {
-        NavigationView {
-            Text("App settings will go here")
-                .navigationTitle("Settings")
-        }
-    }
-}
