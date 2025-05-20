@@ -132,9 +132,9 @@ MazeWatch/
 |-------------------|----------------|----------------|
 | screenshot | screenshot | screenshot |
 
-| Lockscreen |
-|-------------------|
-| screenshot |
+| Favorites | Lockscreen |
+|-------------------|----------------|
+| screenshot | screenshot |
 
 ---
 
