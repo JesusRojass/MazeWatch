@@ -126,15 +126,23 @@ MazeWatch/
 
 | TV Series Listing | Series Detail | Series Search |
 |-------------------|----------------|----------------|
-| screenshot | screenshot | screenshot |
+|  ![seriesList](https://github.com/user-attachments/assets/286c7447-9d85-4623-a500-9647ac08e2c6)
+| ![seriesDetail](https://github.com/user-attachments/assets/5ae4deee-2817-4498-b9ed-93abd4762678)
+ | ![seriesSearch](https://github.com/user-attachments/assets/81afaa26-2797-49b2-a58a-0bc3d1484ed7)
+ |
 
 | People Search | People Details | Settings |
 |-------------------|----------------|----------------|
-| screenshot | screenshot | screenshot |
+| ![peopleSearch](https://github.com/user-attachments/assets/09515344-2246-4956-87f4-02e0a5d247d6)
+ |  ![peopleDetail](https://github.com/user-attachments/assets/869e47a8-3205-4ee1-a71e-805341df26d3)
+| ![SettingsView](https://github.com/user-attachments/assets/9939b5e4-9f38-4526-81b5-345019870968)
+ |
 
 | Favorites | Lockscreen |
 |-------------------|----------------|
-| screenshot | screenshot |
+| ![favoritesView](https://github.com/user-attachments/assets/52230f86-a4c1-45c4-9f08-f1f58df701d1)
+ | ![lockscreenView](https://github.com/user-attachments/assets/fd3b13c2-cc7f-4518-83e6-4f1e816f7de6)
+ |
 
 ---
 
